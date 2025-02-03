@@ -4,7 +4,7 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-router.post('/register', async (req, res) => {
+const register= async (req, res) => {
     try {
         console.log('JWT_SECRET:', process.env.JWT_SECRET);
         const { name, email, password } = req.body;
@@ -37,9 +37,9 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Error creating user', error: error.message });
     }
-});
+};
 
-router.post('/login', async (req, res) => {
+const login= async (req, res) => {
     try {
         console.log('JWT_SECRET:', process.env.JWT_SECRET);
         const { email, password } = req.body;
@@ -67,6 +67,18 @@ router.post('/login', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Login failed', error: error.message });
     }
-});
+};
 
 module.exports = router;
+exports.handler=async (event,context) => {
+    if(event.httpMethod === 'POST' && event.path === '/login'){
+        return login(event,context);
+    }
+    if(event.httpMethod === 'POST' && event.path === '/register'){
+        return register(event,context);
+    }
+    return {
+        statusCode: 404,
+        body: JSON.stringify({ message: 'Not Found' })
+    };
+}
