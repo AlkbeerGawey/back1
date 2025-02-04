@@ -15,7 +15,7 @@ authRoutes.stack.forEach((middleware) => {
 });
 console.log("Current server time:", new Date());
 // Middleware
-const allowed_orgins=['http://127.0.0.1:5500','https://courageous-arithmetic-341f5d.netlify.app','https://lighthearted-crumble-eeeb5b.netlify.app'];
+const allowed_orgins=['http://127.0.0.1:5500','https://courageous-arithmetic-341f5d.netlify.app','https://infinite-backend-1234.netlify.app'];
 app.use(cors({
     origin: (origin, callback) => {
         if (allowed_orgins.includes(origin) || !origin) {
