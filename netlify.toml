@@ -1,0 +1,6 @@
+[build]
+  functions = "netlify/functions"
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"  # :splat captures the wildcard path
+  status = 200
