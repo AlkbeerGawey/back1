@@ -4,3 +4,7 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"  # :splat captures the wildcard path
   status = 200
+[dev]
+  autoLaunch = false
+  publish = "public"
+  framework = "#static"

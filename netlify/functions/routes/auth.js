@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../../netlify/functions/models/user');
+const User = require('../models/user');
 const cors = require('cors')({
     origin: 'https://courageous-arithmetic-341f5d.netlify.app',
     methods: ['POST','GET','OPTIONS'],
