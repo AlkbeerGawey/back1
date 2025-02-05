@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/auth');
+const connectDB = require('./functions/config/db');
+const authRoutes = require('./functions/routes/auth');
 require('dotenv').config();
 
 const app = express();
@@ -14,19 +14,7 @@ authRoutes.stack.forEach((middleware) => {
     }
 });
 console.log("Current server time:", new Date());
-// Middleware
-const allowed_orgins=['http://127.0.0.1:5500','https://courageous-arithmetic-341f5d.netlify.app','https://infinite-backend-1234.netlify.app'];
-app.use(cors({
-    origin: (origin, callback) => {
-        if (allowed_orgins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'), false);
-        }
-    },
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Welcome to the backend server!');

@@ -1,6 +1,6 @@
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '.env') });
-const result = require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+require('dotenv').config();
+const result = require('dotenv').config();
 
 if (result.error) {
   console.error("Error loading .env file:", result.error);
