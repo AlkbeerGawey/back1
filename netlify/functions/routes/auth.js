@@ -110,7 +110,7 @@ exports.handler=async (event,context) => {
           body: 'OK',
         };
     }
-    const path = event.path.replace('/.netlify/functions/auth', '');
+    const path = event.path.replace('/netlify/functions/auth', '');
     if(event.httpMethod === 'POST' && path=== '/login'){
         return login(event,context);
     }
