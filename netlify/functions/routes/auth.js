@@ -4,7 +4,7 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const cors = require('cors')({
-    origin: 'https://courageous-arithmetic-341f5d.netlify.app',
+    origin: '*',
     methods: ['POST','GET','OPTIONS'],
     allowedHeaders: ['Content-Type'],
 });
@@ -110,10 +110,11 @@ exports.handler=async (event,context) => {
           body: 'OK',
         };
     }
-    if(event.httpMethod === 'POST' && event.path === '/login'){
+    const path = event.path.replace('/.netlify/functions/auth', '');
+    if(event.httpMethod === 'POST' && path=== '/login'){
         return login(event,context);
     }
-    if(event.httpMethod === 'POST' && event.path === '/register'){
+    if(event.httpMethod === 'POST' && path === '/register'){
         return register(event,context);
     }
     return {
