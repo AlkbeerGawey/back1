@@ -16,7 +16,7 @@ authRoutes.stack.forEach((middleware) => {
 console.log("Current server time:", new Date());
 app.use(cors());
 app.use(express.json());
-app.get('https://infinite-backend-cxgtafc7duhsb7dt.canadacentral-01.azurewebsites.net', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Welcome to the backend server!');
 });
 // Routes
