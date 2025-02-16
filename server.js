@@ -14,7 +14,12 @@ authRoutes.stack.forEach((middleware) => {
     }
 });
 console.log("Current server time:", new Date());
-app.use(cors());
+app.use(cors({
+    origin: 'https://courageous-arithmetic-341f5d.netlify.app', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
+app.options('*', cors());
 app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Welcome to the backend server!');
