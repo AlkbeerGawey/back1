@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./netlify/functions/config/db');
-const authRoutes = require('./netlify/functions/routes/auth');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/auth');
 require('dotenv').config();
 
 const app = express();
