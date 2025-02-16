@@ -3,11 +3,7 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const cors = require('cors')({
-    origin: '*',
-    methods: ['POST','GET','OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-});
+const cors = require('cors');
 const register= async (req, res) => {
     try {
         console.log('JWT_SECRET:', process.env.JWT_SECRET);

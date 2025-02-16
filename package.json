@@ -9,6 +9,9 @@
       "jsonwebtoken": "^9.0.2",
       "dotenv": "^16.4.7"
     },
+    "scripts": {
+      "start": "node server.js"
+    },
     "devDependencies": {
       "nodemon": "^2.0.4"
     }
