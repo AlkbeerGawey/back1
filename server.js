@@ -19,6 +19,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 }));
+app.options('*', cors());
 app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Welcome to the backend server!');
