@@ -15,7 +15,11 @@ authRoutes.stack.forEach((middleware) => {
 });
 console.log("Current server time:", new Date());
 app.use(cors({
-    origin: 'https://courageous-arithmetic-341f5d.netlify.app', // Replace with your frontend URL
+    origin: [
+        'https://courageous-arithmetic-341f5d.netlify.app',
+        'https://infinite-backend-cxgtafc7duhsb7dt.canadacentral-01.azurewebsites.net',
+        'http://localhost:3000'
+    ],
     methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 }));
