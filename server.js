@@ -5,6 +5,11 @@ const authRoutes = require('./routes/auth');
 require('dotenv').config();
 
 const app = express();
+app.use(cors({
+    origin: 'https://courageous-arithmetic-341f5d.netlify.app',
+    methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
 // Connect to Database
 console.log('JWT_SECRET:', process.env.JWT_SECRET);
 connectDB();
@@ -14,15 +19,6 @@ authRoutes.stack.forEach((middleware) => {
     }
 });
 console.log("Current server time:", new Date());
-app.use(cors({
-    origin: [
-        'https://courageous-arithmetic-341f5d.netlify.app',
-        'https://infinite-backend-cxgtafc7duhsb7dt.canadacentral-01.azurewebsites.net',
-        'http://localhost:3000'
-    ],
-    methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-}));
 app.options('*', cors());
 app.use(express.json());
 app.get('/', (req, res) => {
